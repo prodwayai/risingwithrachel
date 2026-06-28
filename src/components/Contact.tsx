@@ -23,15 +23,6 @@ const Contact: React.FC = () => {
               <div className="rwr-info-item">
                 <span className="ico" aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" />
-                  </svg>
-                </span>
-                <div><b>hello@risingwithrachel.com</b><span>Replies within a couple of days</span></div>
-              </div>
-
-              <div className="rwr-info-item">
-                <span className="ico" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z" /><circle cx="12" cy="10" r="3" />
                   </svg>
                 </span>
