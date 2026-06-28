@@ -7,6 +7,7 @@ import Services from './components/Services';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AdminButton from './components/AdminButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Experience />
       <Contact />
       <Footer />
+      <AdminButton />
     </div>
   );
 }
