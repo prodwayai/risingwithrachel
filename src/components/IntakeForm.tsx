@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Row, Col, Spinner } from 'react-bootstrap';
+import { Form, Row, Col } from 'react-bootstrap';
 import { motion, AnimatePresence } from 'framer-motion';
 
 type FormState = {
@@ -64,25 +64,27 @@ const IntakeForm: React.FC = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
-          className="text-center py-5"
+          className="rwr-success"
         >
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.1, type: 'spring', stiffness: 200, damping: 12 }}
-            className="d-inline-flex align-items-center justify-content-center mb-4"
-            style={{ width: 80, height: 80, borderRadius: '50%', background: 'rgba(37,99,235,0.1)' }}
+            className="check"
           >
-            <i className="bi bi-check-lg text-primary" style={{ fontSize: '2.5rem' }}></i>
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
           </motion.div>
-          <h3 className="fw-bold mb-2">Thank you!</h3>
-          <p className="text-muted mb-4">
+          <h3>Thank you!</h3>
+          <p>
             Your inquiry is on its way to Rachel. Check your inbox for a confirmation —
             she'll be in touch within a couple of days.
           </p>
-          <Button variant="outline-primary" onClick={() => setStatus('idle')}>
+          <button type="button" className="rwr-btn rwr-btn--ghost" onClick={() => setStatus('idle')}>
             Send another inquiry
-          </Button>
+          </button>
         </motion.div>
       ) : (
         <motion.div
@@ -91,7 +93,7 @@ const IntakeForm: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <Form onSubmit={handleSubmit} noValidate>
+          <Form onSubmit={handleSubmit} noValidate className="rwr-form">
             <input
               type="text" name="company" value={data.company} onChange={update('company')}
               tabIndex={-1} autoComplete="off"
@@ -101,13 +103,13 @@ const IntakeForm: React.FC = () => {
             <Row className="g-3">
               <Col md={6}>
                 <Form.Group controlId="rwr-name">
-                  <Form.Label className="fw-medium">Name <span className="text-primary">*</span></Form.Label>
+                  <Form.Label className="fw-medium">Name <span className="rwr-req">*</span></Form.Label>
                   <Form.Control required value={data.name} onChange={update('name')} placeholder="Your full name" />
                 </Form.Group>
               </Col>
               <Col md={6}>
                 <Form.Group controlId="rwr-email">
-                  <Form.Label className="fw-medium">Email <span className="text-primary">*</span></Form.Label>
+                  <Form.Label className="fw-medium">Email <span className="rwr-req">*</span></Form.Label>
                   <Form.Control required type="email" value={data.email} onChange={update('email')} placeholder="you@example.com" />
                 </Form.Group>
               </Col>
@@ -163,20 +165,30 @@ const IntakeForm: React.FC = () => {
               {status === 'error' && (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
-                  className="alert alert-danger mt-3 mb-0" role="alert"
+                  className="rwr-form-alert" role="alert"
                 >
                   {error}
                 </motion.div>
               )}
             </AnimatePresence>
 
-            <div className="d-grid mt-4">
-              <Button type="submit" size="lg" disabled={status === 'submitting'}>
-                {status === 'submitting' ? (
-                  <><Spinner animation="border" size="sm" className="me-2" />Sending…</>
-                ) : 'Send my inquiry'}
-              </Button>
-            </div>
+            <button
+              type="submit"
+              className="rwr-btn rwr-btn--solid"
+              disabled={status === 'submitting'}
+              style={{ width: '100%', marginTop: 24 }}
+            >
+              {status === 'submitting' ? (
+                <><span className="rwr-spinner" aria-hidden="true" />Sending…</>
+              ) : (
+                <>Send my inquiry
+                  <svg className="rwr-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </>
+              )}
+            </button>
           </Form>
         </motion.div>
       )}

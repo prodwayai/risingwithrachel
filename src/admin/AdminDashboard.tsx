@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Counter from '../components/Counter';
 import './admin.css';
 
 type Submission = {
@@ -142,16 +143,17 @@ const Dashboard: React.FC<{ token: string; onLogout: () => void }> = ({ token, o
 
       <div className="rwr-admin-stats">
         <motion.div className="rwr-admin-stat" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-          <span className="rwr-admin-stat-num">{subs.length}</span>
+          <Counter className="rwr-admin-stat-num" to={subs.length} />
           <span className="rwr-admin-stat-label">Total inquiries</span>
         </motion.div>
         <motion.div className="rwr-admin-stat" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>
-          <span className="rwr-admin-stat-num">
-            {subs.filter((s) => {
+          <Counter
+            className="rwr-admin-stat-num"
+            to={subs.filter((s) => {
               const d = new Date((s.created_at || '').replace(' ', 'T') + 'Z');
               return Date.now() - d.getTime() < 7 * 864e5;
             }).length}
-          </span>
+          />
           <span className="rwr-admin-stat-label">Last 7 days</span>
         </motion.div>
       </div>

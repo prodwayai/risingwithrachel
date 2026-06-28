@@ -1,81 +1,74 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import Reveal from './Reveal';
+
+const Check = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20 6 9 17l-5-5" />
+  </svg>
+);
+
+const SERVICES = [
+  {
+    title: 'Personalized Coaching',
+    body: 'One-on-one coaching built entirely around your goals, schedule, and body. We refine form, build endurance, and keep you healthy along the way.',
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="7" r="4" /><path d="M5.5 21a6.5 6.5 0 0 1 13 0" /><path d="m17 8 2 2 3-3" />
+      </svg>
+    ),
+    features: ['Custom training plans', 'Form & technique analysis', 'Race strategy development', 'Recovery & injury prevention', 'Virtual or in-person sessions'],
+  },
+  {
+    title: 'Marathon Expertise',
+    body: "Training for your first marathon or chasing a Boston qualifier? I bring lessons from 10+ marathons across the World Majors directly to your plan.",
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 9V2h12v7a6 6 0 0 1-12 0Z" /><path d="M6 5H3v2a3 3 0 0 0 3 3M18 5h3v2a3 3 0 0 1-3 3M9 22h6M12 15v7" />
+      </svg>
+    ),
+    features: ['Marathon-specific training', 'Race-day preparation', 'Pacing strategy', 'Fueling & nutrition planning', 'Mental preparation'],
+  },
+];
 
 const Services: React.FC = () => {
   return (
-    <section id="services" className="py-5 bg-light">
-      <Container>
-        <Row className="mb-5">
-          <Col className="text-center">
-            <h2 className="display-5 fw-bold mb-3">1:1 Run Coaching Services</h2>
-            <p className="lead mb-4">
-              Personalized coaching tailored to your specific goals and running experience
-            </p>
-            <div className="border-bottom border-primary w-25 mx-auto mb-4" style={{borderWidth: '3px'}}></div>
-          </Col>
-        </Row>
-        
-        <Row>
-          <Col lg={6} className="mb-4">
-            <Card className="h-100 shadow-sm hover-lift">
-              <Card.Body className="p-4">
-                <div className="d-flex align-items-center mb-3">
-                  <div className="text-primary fs-1 me-3">
-                    <i className="bi bi-person-check"></i>
-                  </div>
-                  <h3 className="h4 mb-0">Personalized Coaching</h3>
-                </div>
-                <Card.Text>
-                  One-on-one coaching sessions focused on your specific needs and goals. I'll work directly with you to improve your form, endurance, and performance while preventing injuries.
-                </Card.Text>
-                <ul className="list-unstyled mt-3">
-                  <li className="mb-2">✓ Custom training plans</li>
-                  <li className="mb-2">✓ Form and technique analysis</li>
-                  <li className="mb-2">✓ Race strategy development</li>
-                  <li className="mb-2">✓ Recovery and injury prevention</li>
-                  <li className="mb-2">✓ Virtual or in-person sessions</li>
+    <section id="services" className="rwr-section rwr-services">
+      <div className="rwr-container">
+        <Reveal className="rwr-section-head is-center">
+          <span className="rwr-eyebrow">What I offer</span>
+          <h2 className="rwr-h2">1:1 run coaching, tailored to you</h2>
+          <p className="rwr-lead" style={{ marginTop: 16 }}>
+            Personalized programming for every kind of runner — from first-timers to those rewriting their PRs.
+          </p>
+        </Reveal>
+
+        <div className="rwr-services-grid">
+          {SERVICES.map((s, i) => (
+            <Reveal key={s.title} delay={i * 0.12}>
+              <article className="rwr-service">
+                <div className="rwr-service-ico">{s.icon}</div>
+                <h3>{s.title}</h3>
+                <p>{s.body}</p>
+                <ul className="rwr-feature-list">
+                  {s.features.map((f) => (
+                    <li key={f}><Check />{f}</li>
+                  ))}
                 </ul>
-              </Card.Body>
-            </Card>
-          </Col>
-          
-          <Col lg={6} className="mb-4">
-            <Card className="h-100 shadow-sm hover-lift">
-              <Card.Body className="p-4">
-                <div className="d-flex align-items-center mb-3">
-                  <div className="text-primary fs-1 me-3">
-                    <i className="bi bi-trophy"></i>
-                  </div>
-                  <h3 className="h4 mb-0">Marathon Expertise</h3>
-                </div>
-                <Card.Text>
-                  Whether you're training for your first marathon or aiming for a Boston qualification, I bring my experience from 10+ completed marathons, including Boston, Chicago, and Houston.
-                </Card.Text>
-                <ul className="list-unstyled mt-3">
-                  <li className="mb-2">✓ Marathon-specific training</li>
-                  <li className="mb-2">✓ Race day preparation</li>
-                  <li className="mb-2">✓ Pacing strategy</li>
-                  <li className="mb-2">✓ Nutrition planning</li>
-                  <li className="mb-2">✓ Mental preparation techniques</li>
-                </ul>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-        
-        <Row className="mt-4">
-          <Col className="text-center">
-            <p className="text-muted mb-4">
-              For detailed pricing information, please contact through email or phone.
-            </p>
-            <Button href="#contact" variant="primary" size="lg" className="px-5">
-              Get Started Today
-            </Button>
-          </Col>
-        </Row>
-      </Container>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal className="rwr-services-cta" delay={0.1}>
+          <p>For detailed pricing, reach out below — every plan is quoted to fit your goals.</p>
+          <a className="rwr-btn rwr-btn--ink" href="#contact">Get started today</a>
+        </Reveal>
+      </div>
     </section>
   );
 };
 
-export default Services; 
+export default Services;

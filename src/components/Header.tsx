@@ -1,29 +1,55 @@
-import React, { useState } from 'react';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+
+const LINKS = [
+  { href: '#about', label: 'About' },
+  { href: '#services', label: 'Services' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#contact', label: 'Contact' },
+];
 
 const Header: React.FC = () => {
-  const [expanded, setExpanded] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const navClass = `rwr-nav ${scrolled ? 'is-scrolled' : 'is-top'}`;
 
   return (
-    <Navbar bg="primary" variant="dark" expand="md" fixed="top" expanded={expanded}>
-      <Container>
-        <Navbar.Brand href="#home">Rising With Rachel</Navbar.Brand>
-        <Navbar.Toggle 
-          aria-controls="basic-navbar-nav" 
-          onClick={() => setExpanded(expanded ? false : true)}
-        />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link href="#home" onClick={() => setExpanded(false)}>Home</Nav.Link>
-            <Nav.Link href="#about" onClick={() => setExpanded(false)}>About</Nav.Link>
-            <Nav.Link href="#services" onClick={() => setExpanded(false)}>Services</Nav.Link>
-            <Nav.Link href="#experience" onClick={() => setExpanded(false)}>Experience</Nav.Link>
-            <Nav.Link href="#contact" onClick={() => setExpanded(false)}>Contact</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <header className={navClass}>
+      <div className="rwr-container rwr-nav-inner">
+        <a className="rwr-brand" href="#home" onClick={() => setOpen(false)}>
+          <span className="rwr-mark">RR</span>
+          Rising&nbsp;with&nbsp;Rachel
+        </a>
+
+        <button
+          className={`rwr-nav-toggle ${open ? 'is-open' : ''}`}
+          aria-label="Toggle menu"
+          aria-expanded={open}
+          onClick={() => setOpen((o) => !o)}
+        >
+          <span />
+        </button>
+
+        <nav className={`rwr-nav-links ${open ? 'is-mobile-open' : ''}`}>
+          {LINKS.map((l) => (
+            <a key={l.href} className="rwr-nav-link" href={l.href} onClick={() => setOpen(false)}>
+              {l.label}
+            </a>
+          ))}
+          <a className="rwr-btn rwr-btn--solid rwr-nav-cta" href="#contact" onClick={() => setOpen(false)}>
+            Start your journey
+          </a>
+        </nav>
+      </div>
+    </header>
   );
 };
 
-export default Header; 
+export default Header;

@@ -26,9 +26,10 @@
 .rwr-admin-fab:hover {
   color: #fff;
   opacity: 1;
-  background: #2563eb;
+  background: linear-gradient(115deg, #ff5a36 0%, #ff8a3c 45%, #ffc24d 100%);
+  border-color: transparent;
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px -10px rgba(37, 99, 235, 0.6);
+  box-shadow: 0 14px 30px -10px rgba(255, 90, 54, 0.6);
 }
 
 .rwr-admin-fab:active {

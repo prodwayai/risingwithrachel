@@ -1,70 +1,57 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import Reveal from './Reveal';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-5 bg-white">
-      <Container>
-        <Row className="mb-4">
-          <Col className="text-center">
-            <h2 className="display-5 fw-bold mb-3">About Rachel</h2>
-            <div className="border-bottom border-primary w-25 mx-auto mb-4" style={{borderWidth: '3px'}}></div>
-          </Col>
-        </Row>
-        
-        <Row className="align-items-center gy-4">
-          <Col lg={4} className="mb-4 mb-lg-0">
-            <div className="position-relative">
-              <div className="position-absolute bg-primary rounded" 
-                   style={{top: '15px', left: '15px', right: '-15px', bottom: '-15px', zIndex: 0}}></div>
-              <img 
-                src="/images/rain.jpeg" 
-                alt="Rachel running in the rain" 
-                className="rounded img-fluid shadow position-relative"
-                style={{zIndex: 1, maxHeight: '400px', width: '100%', objectFit: 'cover'}}
-              />
+    <section id="about" className="rwr-section rwr-about">
+      <div className="rwr-container">
+        <div className="rwr-about-grid">
+          <Reveal className="rwr-about-figure">
+            <img src="/images/rain.jpeg" alt="Rachel training in the rain" />
+            <div className="tag">
+              <b>BQ</b>
+              <span>3× Qualifier</span>
             </div>
-          </Col>
-          
-          <Col lg={8}>
-            <h3 className="h4 fw-bold mb-3">Running Coach & Marathon Specialist</h3>
-            <p className="mb-4">
-              I'm a passionate running coach with over a decade of experience both as a runner and coach. My journey has taken me through 10 marathons including prestigious races like Boston, Chicago, and Houston.
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <span className="rwr-eyebrow">About Rachel</span>
+            <h2 className="rwr-h2">A coach who has run every mile she asks of you</h2>
+            <p style={{ marginTop: 22 }}>
+              I'm a running coach with over a decade of experience as both an athlete and mentor.
+              My own journey has carried me through 10+ marathons — Boston, Chicago, Houston and beyond —
+              and taught me that the right plan, paced patiently, changes everything.
             </p>
-            <Row className="mb-4 gy-3">
-              <Col md={6}>
-                <Card className="h-100 bg-light border-0">
-                  <Card.Body>
-                    <h4 className="h5 fw-bold text-primary mb-3">Qualifications</h4>
-                    <ul className="list-unstyled mb-0">
-                      <li className="mb-2">• Degree in Exercise Science, American Public University</li>
-                      <li className="mb-2">• Three-time Boston Marathon Qualifier</li>
-                      <li className="mb-2">• 10+ Full Marathons Completed</li>
-                    </ul>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={6}>
-                <Card className="h-100 bg-light border-0">
-                  <Card.Body>
-                    <h4 className="h5 fw-bold text-primary mb-3">Coaching Experience</h4>
-                    <ul className="list-unstyled mb-0">
-                      <li className="mb-2">• Girls On The Run of the Triangle (1+ years)</li>
-                      <li className="mb-2">• Miracle League of the Triangle (10+ years)</li>
-                      <li className="mb-2">• Personalized 1:1 Running Coaching</li>
-                    </ul>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
+
+            <div className="rwr-cards-2">
+              <div className="rwr-mini-card">
+                <h4>Qualifications</h4>
+                <ul>
+                  <li>B.S. Exercise Science, American Public University</li>
+                  <li>Three-time Boston Marathon qualifier</li>
+                  <li>10+ full marathons completed</li>
+                </ul>
+              </div>
+              <div className="rwr-mini-card">
+                <h4>Coaching</h4>
+                <ul>
+                  <li>Girls on the Run of the Triangle</li>
+                  <li>Miracle League of the Triangle (10+ yrs)</li>
+                  <li>Personalized 1:1 run coaching</li>
+                </ul>
+              </div>
+            </div>
+
             <p>
-              I believe running is for everyone, and my coaching philosophy centers on helping you build sustainable habits, prevent injuries, and achieve your personal best – whether you're training for your first 5K or looking to qualify for Boston.
+              I believe running is for everyone. My philosophy centers on building sustainable habits,
+              preventing injury, and helping you reach your personal best — whether that's your first 5K
+              or a Boston qualifying time.
             </p>
-          </Col>
-        </Row>
-      </Container>
+          </Reveal>
+        </div>
+      </div>
     </section>
   );
 };
 
-export default About; 
+export default About;

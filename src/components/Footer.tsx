@@ -1,46 +1,52 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
 
 const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
-
+  const year = new Date().getFullYear();
   return (
-    <footer className="bg-dark text-white py-4">
-      <Container>
-        <Row className="align-items-center">
-          <Col md={6} className="mb-3 mb-md-0 text-center text-md-start">
-            <p className="text-muted mb-0 small">
-              &copy; {currentYear} Rising With Rachel. All rights reserved.
+    <footer className="rwr-footer">
+      <div className="rwr-container">
+        <div className="rwr-footer-top">
+          <div>
+            <div className="rwr-footer-brand">
+              <span className="rwr-mark">RR</span>
+              Rising with Rachel
+            </div>
+            <p className="rwr-footer-tag">
+              Personalized run coaching that meets you at your starting line and carries you to the finish.
             </p>
-            <p className="text-muted small mb-0 mt-1">
-              <span className="me-3">rachelmlamm@gmail.com</span>
-              <span>(919) 909-0863</span>
-            </p>
-          </Col>
-          
-          <Col md={6} className="text-center text-md-end">
-            <div className="d-flex justify-content-center justify-content-md-end gap-3">
-              <a href="https://www.instagram.com/rachelontherun_/" target="_blank" rel="noopener noreferrer" className="text-muted">
-                <i className="bi bi-instagram fs-5"></i>
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-muted">
-                <i className="bi bi-facebook fs-5"></i>
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-muted">
-                <i className="bi bi-twitter fs-5"></i>
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted">
-                <i className="bi bi-linkedin fs-5"></i>
+            <div className="rwr-footer-socials" style={{ marginTop: 20 }}>
+              <a href="https://www.instagram.com/rachelontherun_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                </svg>
               </a>
             </div>
-            <p className="text-muted small mb-0 mt-2">
-              Website: <a href="http://risingwithrachel.com" className="text-muted">risingwithrachel.com</a>
-            </p>
-          </Col>
-        </Row>
-      </Container>
+          </div>
+
+          <div className="rwr-footer-cols">
+            <div className="rwr-footer-col">
+              <h5>Explore</h5>
+              <a href="#about">About</a>
+              <a href="#services">Services</a>
+              <a href="#experience">Experience</a>
+              <a href="#contact">Contact</a>
+            </div>
+            <div className="rwr-footer-col">
+              <h5>Get in touch</h5>
+              <a href="mailto:hello@risingwithrachel.com">hello@risingwithrachel.com</a>
+              <p>Raleigh, North Carolina</p>
+              <p>Coaching available nationwide</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="rwr-footer-bottom">
+          <span>&copy; {year} Rising with Rachel. All rights reserved.</span>
+          <span>risingwithrachel.com</span>
+        </div>
+      </div>
     </footer>
   );
 };
 
-export default Footer; 
+export default Footer;
