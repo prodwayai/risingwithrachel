@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Rising with Rachel">
+  <defs>
+    <linearGradient id="rwr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff5a36"/>
+      <stop offset="0.55" stop-color="#ff8a3c"/>
+      <stop offset="1" stop-color="#ffc24d"/>
+    </linearGradient>
+    <clipPath id="sky"><rect x="0" y="0" width="512" height="356"/></clipPath>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="url(#rwr)"/>
+  <g stroke="#ffffff" stroke-width="26" stroke-linecap="round">
+    <line x1="256" y1="236" x2="256" y2="190"/>
+    <line x1="341" y1="271" x2="373" y2="239"/>
+    <line x1="171" y1="271" x2="139" y2="239"/>
+    <line x1="369" y1="315" x2="411" y2="300"/>
+    <line x1="143" y1="315" x2="101" y2="300"/>
+  </g>
+  <circle cx="256" cy="356" r="96" fill="#ffffff" clip-path="url(#sky)"/>
+  <line x1="86" y1="392" x2="426" y2="392" stroke="#ffffff" stroke-width="26" stroke-linecap="round"/>
+</svg>
