@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import IntakeForm from './IntakeForm';
 
 const Contact: React.FC = () => {
   return (
@@ -9,10 +10,21 @@ const Contact: React.FC = () => {
           <Col className="text-center">
             <h2 className="display-5 fw-bold mb-3">Get In Touch</h2>
             <p className="lead">
-              Ready to take your running to the next level? Contact me to discuss your goals and how we can work together.
-              <span className="d-block mt-2 fw-medium">For inquiries on pricing, please contact through email.</span>
+              Ready to take your running to the next level? Fill out the form below to tell me about your goals,
+              and I'll be in touch to discuss how we can work together.
             </p>
             <div className="border-bottom border-primary w-25 mx-auto mb-4" style={{borderWidth: '3px'}}></div>
+          </Col>
+        </Row>
+
+        <Row className="justify-content-center mb-5">
+          <Col lg={8} md={10}>
+            <Card className="shadow-sm">
+              <Card.Body className="p-4 p-md-5">
+                <h3 className="h4 fw-bold mb-4 text-center">Start Your Coaching Journey</h3>
+                <IntakeForm />
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
         
